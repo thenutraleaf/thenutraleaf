@@ -1,0 +1,101 @@
+---
+import '../styles.css';
+import { site, product, waLink, generalMsg, orderMsg, testimonials, ingredients } from '../config.js';
+import { icons } from '../icons.js';
+const title = 'The NutraLeaf | Premium Herbal Blend';
+const desc = 'The NutraLeaf Herbal Wellness Blend: a blend of Moringa, Ashwagandha, Shatavari, Safed Musli, Fennel, Amla, Flaxseed, Mishri and Ginseng. Order directly on WhatsApp.';
+const og = site.url + '/images/label.jpg';
+const nav = [['Home','#home'],['About Us','#about'],['Our Benefits','#benefits'],['Ingredients','#ingredients'],['How to Use','#how'],['FAQ','#faq'],['Contact','#contact']];
+const order = waLink(orderMsg('1'));
+const ld = { '@context':'https://schema.org','@type':'Product',name:product.name,description:product.description,image:site.url+'/images/product.jpg',brand:{'@type':'Brand',name:'NutraLeaf'},url:site.url };
+const benefits = [
+ ['zap','Energy and stamina','Ingredients such as Ashwagandha, Ginseng and Safed Musli are included to help support energy and stamina.'],
+ ['shield','Immunity support','Moringa and Amla are included to help support immunity.'],
+ ['leaf','Digestion and gut well-being','Fennel and Flaxseed are included to help support digestion and overall gut well-being.'],
+ ['heart','Overall wellness','A blend made to support vitality, strength and overall well-being.'],
+];
+const faqs = [
+ ['What is The NutraLeaf?','The NutraLeaf is a herbal wellness blend, labelled as an herbal supplement, made from carefully selected herbs and natural nutrients.'],
+ ['What ingredients are included?','Moringa, Ashwagandha, Shatavari, Safed Musli, Fennel, Amla, Flaxseed, Mishri and Ginseng.'],
+ ['How should I use the product?','Usage directions are not printed on the label we have. Please message us on WhatsApp for guidance, and follow the directions on your pack. [Editable: add label directions here]'],
+ ['What quantity does the package contain?', product.quantity.startsWith('TODO') ? 'Please message us on WhatsApp to confirm the pack size. [Editable: set quantity in config]' : product.quantity],
+ ['How can I order?','Tap any Order on WhatsApp button. It opens a chat with us with a ready-made message. We confirm availability, price and delivery there.'],
+ ['How can I contact customer support?',`WhatsApp ${site.whatsappDisplay} or email ${site.email}.`],
+ ['What should I know before using this herbal blend?','Consult a healthcare professional before use if you are pregnant, nursing or taking any medication. Not recommended for children under 12. If any adverse reaction occurs, discontinue use and consult your doctor. Store in a cool, dry place away from direct sunlight and keep out of reach of children. This product is not intended to diagnose, treat, cure or prevent any disease.'],
+];
+---
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{title}</title><meta name="description" content={desc}>
+<link rel="canonical" href={site.url+'/'}><link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website"><meta property="og:title" content={title}><meta property="og:description" content={desc}><meta property="og:url" content={site.url+'/'}><meta property="og:image" content={og}><meta property="og:site_name" content={site.brand}>
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content={title}><meta name="twitter:description" content={desc}><meta name="twitter:image" content={og}>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json" set:html={JSON.stringify(ld)}></script>
+</head><body>
+<div class="bar">{site.announcement}</div>
+<header><div class="wrap nav">
+ <a class="logo" href="#home" aria-label="The NutraLeaf home"><Fragment set:html={icons.leaf}/>The NutraLeaf</a>
+ <nav id="nav" aria-label="Main"><ul>{nav.map(([l,h])=><li><a href={h}>{l}</a></li>)}<li class="m"><a class="btn wa" href={order} target="_blank" rel="noopener" style="display:inline-flex;border:0">Order Now</a></li></ul></nav>
+ <a class="btn wa" href={order} target="_blank" rel="noopener">Order Now</a>
+ <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><Fragment set:html={icons.menu}/></button>
+</div></header>
+<main>
+<section class="hero" id="home"><div class="wrap grid2">
+ <div><h1>Nourishing herbs. Stronger you.</h1>
+ <p class="lead">A blend of nine carefully selected herbs and natural nutrients, made to help support vitality, strength and overall well-being.</p>
+ <div class="ctas"><a class="btn wa" href={waLink(generalMsg)} target="_blank" rel="noopener"><Fragment set:html={icons.wa}/>Order on WhatsApp</a><a class="btn ghost" href="#product">Explore Product</a></div></div>
+ <figure><img src="/images/product.jpg" alt="NutraLeaf Herbal Wellness Blend bottle with label" width="525" height="1024" fetchpriority="high"><figcaption>100% natural. No added preservatives. Pure &amp; safe formula.</figcaption></figure>
+</div></section>
+<div class="trust"><div class="wrap">
+ <div><Fragment set:html={icons.leaf}/><p><b>100% natural</b><span>As stated on the label</span></p></div>
+ <div><Fragment set:html={icons.shield}/><p><b>No added preservatives</b><span>As stated on the label</span></p></div>
+ <div><Fragment set:html={icons.heart}/><p><b>Pure &amp; safe formula</b><span>As stated on the label</span></p></div>
+ <div><Fragment set:html={icons.sun}/><p><b>Simple daily routine</b><span>One blend, nine herbs</span></p></div>
+</div></div>
+<section id="product"><div class="wrap grid2">
+ <div class="pimg"><img src="/images/product-ingredients.jpg" alt="Back label of the NutraLeaf bottle listing ingredients" loading="lazy" width="470" height="1024"></div>
+ <div><h2>{product.name}</h2><p class="lead" style="margin-top:1rem">{product.description}</p>
+ <p class="price">{product.price || 'Message us for price'}</p>
+ <dl class="spec"><dt>Format</dt><dd>{product.format}</dd><dt>Quantity</dt><dd>{product.quantity}</dd><dt>Tagline</dt><dd>{product.tagline}</dd></dl>
+ <div class="order"><label for="qty" class="sr" style="position:absolute;left:-9999px">Quantity</label>
+ <select id="qty" aria-label="Quantity">{product.quantities.map(q=><option value={q}>Qty: {q}</option>)}</select>
+ <a id="orderBtn" class="btn wa" href={order} target="_blank" rel="noopener"><Fragment set:html={icons.wa}/>Order Now</a></div></div>
+</div></section>
+<section class="benefits" id="benefits"><div class="wrap"><h2>Our Benefits</h2><p class="lead" style="margin-top:1rem">Based on what the product label says each ingredient is for.</p>
+ <div class="cards">{benefits.map(([i,t,d])=><div class="card"><Fragment set:html={icons[i]}/><h3>{t}</h3><p>{d}</p></div>)}</div></div></section>
+<section id="ingredients"><div class="wrap"><h2>Nine ingredients, one blend</h2>
+ <div class="ing">{ingredients.map(([n,d])=><div><h3>{n}</h3><p>{d}</p></div>)}</div>
+ <img class="labelimg" src="/images/label.jpg" alt="Full NutraLeaf product label" loading="lazy" width="1600" height="630"></div></section>
+<section class="steps" id="how"><div class="wrap"><h2>How to use</h2><p class="lead" style="margin-top:1rem;color:#dfe8d4">Directions are not printed on the label we have. Replace these placeholders with your label directions.</p>
+ <div class="cards">{['Check the pack','Take as directed','Store properly'].map((t,i)=><div class="card"><span class="num">{i+1}</span><h3>{t}</h3><p>{['[Editable: add the label directions here.]','[Editable: add serving size and timing from the label.]','Store in a cool, dry place away from direct sunlight. Keep out of reach of children.'][i]}</p></div>)}</div></div></section>
+<section class="why" id="about"><div class="wrap grid2"><div><h2>Why choose The NutraLeaf?</h2><p class="lead" style="margin-top:1rem">Our label promise is simple: nourishing herbs, for a stronger you.</p></div>
+ <ul><li><b>A blend, not a single herb.</b> Nine ingredients combined in one product.</li><li><b>Plain about what it is.</b> The label lists every ingredient and what it is traditionally used for.</li><li><b>Clear precautions.</b> Usage cautions are printed on the pack so you can decide with confidence.</li></ul></div></section>
+<section class="story"><div class="wrap"><h2>Nature. Nourish. Thrive.</h2><p>We believe in everyday wellness built on herbs and natural nutrients. The NutraLeaf brings Moringa, Amla, Ashwagandha and more together in one blend: pure ingredients, pure you.</p></div></section>
+<section><div class="wrap"><h2>Customer testimonials</h2><div class="cards">{testimonials.map(t=><figure class="card tq"><blockquote>“{t.text}”</blockquote><small>{t.name}, {t.place}</small></figure>)}</div><p class="note">Placeholder content. Replace with real customer feedback before launch.</p></div></section>
+<section id="faq" style="background:var(--cream)"><div class="wrap faq"><h2 style="margin-bottom:1.5rem">Frequently asked questions</h2>{faqs.map(([q,a])=><details><summary>{q}<Fragment set:html={icons.plus}/></summary><p>{a}</p></details>)}</div></section>
+<section class="final" id="contact" style="background:var(--green);color:var(--cream)"><div class="wrap grid2">
+ <div><h2 style="color:#fff">Ready to try The NutraLeaf?</h2><p class="lead" style="margin:1rem 0 2rem;color:#dfe8d4">Message us on WhatsApp. We will confirm price, availability and delivery with you directly.</p><a class="btn light" href={waLink(generalMsg)} target="_blank" rel="noopener" style="font-size:1.15rem"><Fragment set:html={icons.wa}/>Order on WhatsApp</a></div>
+ <img src="/images/product.jpg" alt="NutraLeaf Herbal Wellness Blend bottle" loading="lazy" width="525" height="1024" style="width:min(340px,100%);border-radius:24px;justify-self:center"></div></section>
+</main>
+<footer><div class="wrap"><div class="cols">
+ <div><a class="logo" href="#home" style="color:#fff"><Fragment set:html={icons.leaf}/>The NutraLeaf</a><p style="margin-top:.8rem">Nature. Nourish. Thrive.</p>
+ <div class="soc"><a href={site.facebookUrl} target="_blank" rel="noopener" aria-label="Facebook"><Fragment set:html={icons.fb}/></a><a href={waLink(generalMsg)} target="_blank" rel="noopener" aria-label="WhatsApp"><Fragment set:html={icons.wa}/></a></div></div>
+ <div><h4>Explore</h4><ul>{[['Home','#home'],['About','#about'],['Ingredients','#ingredients'],['Benefits','#benefits'],['FAQ','#faq'],['Contact','#contact']].map(([l,h])=><li><a href={h}>{l}</a></li>)}</ul></div>
+ <div><h4>Contact</h4><ul><li><a href={'mailto:'+site.email}>{site.email}</a></li><li><a href={'https://wa.me/'+site.whatsapp} target="_blank" rel="noopener">{site.whatsappDisplay}</a></li><li><a href={site.url}>thenutraleaf.com</a></li></ul></div>
+ <div><h4>Legal</h4><ul><li><a href="#disclaimer">Privacy Policy</a></li><li><a href="#disclaimer">Terms &amp; Conditions</a></li><li><a href="#disclaimer">Product Disclaimer</a></li></ul></div>
+</div>
+<div class="legal" id="disclaimer"><p><b>Product disclaimer.</b> This product is not intended to diagnose, treat, cure or prevent any disease. Consult a healthcare professional before use if you are pregnant, nursing or taking any medication. Not recommended for children under 12. Statements about ingredients reflect the product label.</p>
+<p>[Editable: add your Privacy Policy and Terms &amp; Conditions text or link here.]</p><p>© {new Date().getFullYear()} The NutraLeaf. All rights reserved.</p></div></div></footer>
+<a class="fab" href={waLink(generalMsg)} target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><Fragment set:html={icons.wa}/></a>
+<script is:inline define:vars={{ wa: site.whatsapp, name: product.name, price: product.price }}>
+const b=document.getElementById('burger'),n=document.getElementById('nav');
+const set=o=>{n.classList.toggle('open',o);b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu')};
+b.onclick=()=>set(!n.classList.contains('open'));n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>set(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')set(false)});
+const q=document.getElementById('qty'),o=document.getElementById('orderBtn');
+q.onchange=()=>{const m=`Hello The NutraLeaf! I would like to order ${name}. Quantity: ${q.value}.`+(price?` Price: ${price}.`:'')+' Please confirm availability and delivery details.';o.href=`https://wa.me/${wa}?text=${encodeURIComponent(m)}`};
+</script>
+</body></html>
