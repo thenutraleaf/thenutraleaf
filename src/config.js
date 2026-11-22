@@ -22,7 +22,7 @@ export const product = {
 };
 product.price = product.priceValue ? `${product.currency} ${product.priceValue}` : '';
 export const meta = {
-  pixelId: '',            // paste your Meta Pixel ID (public, safe here)
+  pixelId: '4169591466510100',            // paste your Meta Pixel ID (public, safe here)
   catalogId: '',          // optional, for reference
   domainVerification: '', // paste the facebook-domain-verification code from Meta (optional)
 };
