@@ -2,10 +2,10 @@
 export const site = {
   brand: 'The NutraLeaf',
   url: 'https://thenutraleaf.com',
-  whatsapp: '923131165698',            // digits only, with country code
-  whatsappDisplay: '+923131165698',
+  whatsapp: '923043210320',            // digits only, with country code
+  whatsappDisplay: '+923043210320',
   email: 'order@thenutraleaf.com',
-  facebookUrl: 'https://www.facebook.com/', // TODO: replace with your Facebook page URL
+  facebookUrl: 'https://www.facebook.com/thenutraleaf',
   announcement: 'Discover The NutraLeaf — A Thoughtfully Crafted Herbal Blend',
 };
 export const product = {

@@ -1,5 +1,5 @@
 :root{--green:#1f4d2b;--leaf:#4a8a3c;--lime:#9bbf4a;--cream:#f5efdf;--paper:#fbf8ef;--ink:#23301f;--muted:#5d6b55;--gold:#b8975a;--brown:#4a2c1f;--r:14px}
-*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:84px}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:100px}
 body{font:17px/1.65 'Inter',system-ui,sans-serif;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
 h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.1;color:var(--green)}
 h1{font-size:clamp(2.8rem,6.5vw,5rem)}h2{font-size:clamp(2rem,4vw,3.1rem)}h3{font-size:1.5rem}
@@ -14,11 +14,11 @@ img{max-width:100%;display:block}a{color:inherit}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .bar{background:var(--green);color:var(--cream);text-align:center;font-size:.9rem;padding:.5em 1em}
 header{position:sticky;top:0;z-index:50;background:rgba(251,248,239,.94);backdrop-filter:blur(10px);border-bottom:1px solid #e5dcc3}
-.nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+.nav{display:flex;align-items:center;justify-content:space-between;height:86px}
 .logo{display:flex;align-items:center;gap:.5em;text-decoration:none;font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--green)}.logo svg{font-size:1.5em;color:var(--leaf)}
 nav ul{display:flex;gap:1.6rem;list-style:none;padding:0}nav a{text-decoration:none;font-size:.95rem;font-weight:500}nav a:hover{color:var(--leaf)}
 .burger{display:none;background:none;border:0;font-size:1.8rem;color:var(--green);cursor:pointer}
-.logo img{height:48px;width:auto}.flogo{background:#fbf8ef;border-radius:12px;padding:6px;height:64px!important}
+.logo img{height:64px;width:auto}@media(max-width:600px){.logo img{height:44px}}.flogo{background:#fbf8ef;border-radius:12px;padding:6px;height:76px!important}
 @media(max-width:960px){.burger{display:block}.nav>.btn{display:none}
 nav{position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid #e5dcc3;max-height:0;overflow:hidden;transition:max-height .35s ease}
 nav.open{max-height:480px}nav ul{flex-direction:column;padding:1rem 4%;gap:0}nav li a{display:block;padding:.85em 0;border-bottom:1px solid #eee5cc}nav li.m{padding:1rem 0}}
