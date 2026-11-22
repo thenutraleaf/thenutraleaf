@@ -1,0 +1,15 @@
+---
+import Doc from '../layouts/Doc.astro';
+import { site } from '../config.js';
+---
+<Doc title="Terms &amp; Conditions" path="/terms">
+<p>Last updated: November 2026. By using thenutraleaf.com you agree to these terms.</p>
+<h2>Orders</h2>
+<p>Orders are placed through WhatsApp. Price, availability and delivery are confirmed with you in the chat. An order is only confirmed when we say so in that chat.</p>
+<h2>Product information</h2>
+<p>Product information on this website follows the product label. This product is not intended to diagnose, treat, cure or prevent any disease. Consult a healthcare professional before use if you are pregnant, nursing or taking any medication. Not recommended for children under 12.</p>
+<h2>Changes</h2>
+<p>We may update this website, prices and these terms at any time.</p>
+<h2>Contact</h2>
+<p><a href={'mailto:'+site.email}>{site.email}</a> or WhatsApp {site.whatsappDisplay}.</p>
+</Doc>

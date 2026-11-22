@@ -1,0 +1,17 @@
+---
+import Doc from '../layouts/Doc.astro';
+import { site } from '../config.js';
+---
+<Doc title="Privacy Policy" path="/privacy">
+<p>Last updated: November 2026. This page explains how The NutraLeaf (thenutraleaf.com) handles information.</p>
+<h2>What we collect</h2>
+<p>This website has no accounts or checkout. If you contact us on WhatsApp or email, we receive the details you choose to send (for example your name, phone number and delivery address) and use them only to answer you and handle your order.</p>
+<h2>Cookies and Meta Pixel</h2>
+<p>If you accept cookies, we use the Meta Pixel and Meta Conversions API to measure visits, product views and clicks on our WhatsApp buttons, and to show our ads to relevant people on Facebook and Instagram. This may include your IP address, browser details and Meta cookie identifiers. We do not send health information. If you decline, these tools are not loaded.</p>
+<h2>Sharing</h2>
+<p>We share this measurement data with Meta Platforms. We do not sell your information. Meta handles it under its own privacy policy.</p>
+<h2>Your choices</h2>
+<p>You can clear your browser data to reset your cookie choice, and you can ask us to delete messages you sent us.</p>
+<h2>Contact</h2>
+<p>Email <a href={'mailto:'+site.email}>{site.email}</a> or WhatsApp {site.whatsappDisplay}.</p>
+</Doc>

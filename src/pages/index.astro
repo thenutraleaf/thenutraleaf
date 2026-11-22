@@ -1,0 +1,124 @@
+---
+import '../styles.css';
+import { site, product, meta, waLink, generalMsg, orderMsg, ingredients } from '../config.js';
+import { icons } from '../icons.js';
+const title = 'The NutraLeaf | Premium Herbal Blend';
+const desc = 'The NutraLeaf Herbal Wellness Blend: a blend of Moringa, Ashwagandha, Shatavari, Safed Musli, Fennel, Amla, Flaxseed, Mishri and Ginseng. Order directly on WhatsApp.';
+const og = site.url + '/images/og.jpg';
+const nav = [['Home','#home'],['About Us','#about'],['Our Benefits','#benefits'],['Ingredients','#ingredients'],['How to Use','#how'],['FAQ','#faq'],['Contact','#contact']];
+const order = waLink(orderMsg('1'));
+const ld = [{'@context':'https://schema.org','@type':'Product',name:product.name,sku:product.id,description:product.description,image:[site.url+'/images/product-main.jpg'],brand:{'@type':'Brand',name:'NutraLeaf'},url:site.url+'/',...(product.priceValue?{offers:{'@type':'Offer',price:String(product.priceValue),priceCurrency:product.currency,availability:'https://schema.org/InStock',url:site.url+'/'}}:{})},{'@context':'https://schema.org','@type':'Organization',name:site.brand,url:site.url,logo:site.url+'/images/logo.png',email:site.email}];
+const benefits = [
+ ['zap','Energy and stamina','Ingredients such as Ashwagandha, Ginseng and Safed Musli are included to help support energy and stamina.'],
+ ['shield','Immunity support','Moringa and Amla are included to help support immunity.'],
+ ['leaf','Digestion and gut well-being','Fennel and Flaxseed are included to help support digestion and overall gut well-being.'],
+ ['heart','Overall wellness','A blend made to support vitality, strength and overall well-being.'],
+];
+const faqs = [
+ ['What is The NutraLeaf?','The NutraLeaf is a herbal wellness blend, labelled as an herbal supplement, made from carefully selected herbs and natural nutrients.'],
+ ['What ingredients are included?','Moringa, Ashwagandha, Shatavari, Safed Musli, Fennel, Amla, Flaxseed, Mishri and Ginseng.'],
+ ['How should I use the product?','Please follow the directions printed on your pack. If you have a question about using the product, message us on WhatsApp.'],
+ ['What quantity does the package contain?', product.quantity || 'Please message us on WhatsApp to confirm the pack size before ordering.'],
+ ['How can I order?','Tap any Order on WhatsApp button. It opens a chat with us with a ready-made message. We confirm availability, price and delivery there.'],
+ ['How can I contact customer support?',`WhatsApp ${site.whatsappDisplay} or email ${site.email}.`],
+ ['What should I know before using this herbal blend?','Consult a healthcare professional before use if you are pregnant, nursing or taking any medication. Not recommended for children under 12. If any adverse reaction occurs, discontinue use and consult your doctor. Store in a cool, dry place away from direct sunlight and keep out of reach of children. This product is not intended to diagnose, treat, cure or prevent any disease.'],
+];
+---
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{title}</title><meta name="description" content={desc}>
+<link rel="canonical" href={site.url+'/'}><link rel="icon" href="/favicon.png" type="image/png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">{meta.domainVerification && <meta name="facebook-domain-verification" content={meta.domainVerification}/>}
+<meta property="og:type" content="website"><meta property="og:title" content={title}><meta property="og:description" content={desc}><meta property="og:url" content={site.url+'/'}><meta property="og:image" content={og}><meta property="og:site_name" content={site.brand}>
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content={title}><meta name="twitter:description" content={desc}><meta name="twitter:image" content={og}>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json" set:html={JSON.stringify(ld)}></script>
+</head><body>
+<div class="bar">{site.announcement}</div>
+<header><div class="wrap nav">
+ <a class="logo" href="#home" aria-label="The NutraLeaf home"><img src="/images/logo.webp" alt="The NutraLeaf" width="150" height="72"></a>
+ <nav id="nav" aria-label="Main"><ul>{nav.map(([l,h])=><li><a href={h}>{l}</a></li>)}</ul></nav>
+ <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><Fragment set:html={icons.menu}/></button>
+</div></header>
+<main>
+<section class="hero" id="home"><div class="wrap grid2">
+ <div><h1>Nourishing herbs. Stronger you.</h1>
+ <p class="lead">A blend of nine carefully selected herbs and natural nutrients, made to help support vitality, strength and overall well-being.</p>
+ <div class="ctas"><a class="btn wa" href={waLink(generalMsg)} target="_blank" rel="noopener"><Fragment set:html={icons.wa}/>Order on WhatsApp</a><a class="btn ghost" href="#product">Explore Product</a></div></div>
+ <figure><img src="/images/hero.webp" alt="NutraLeaf Herbal Wellness Blend bottle surrounded by its herbal ingredients" width="1200" height="1200" fetchpriority="high"><figcaption>100% natural. No added preservatives. Pure &amp; safe formula.</figcaption></figure>
+</div></section>
+<div class="trust"><div class="wrap">
+ <div><Fragment set:html={icons.leaf}/><p><b>100% natural</b><span>As stated on the label</span></p></div>
+ <div><Fragment set:html={icons.shield}/><p><b>No added preservatives</b><span>As stated on the label</span></p></div>
+ <div><Fragment set:html={icons.heart}/><p><b>Pure &amp; safe formula</b><span>As stated on the label</span></p></div>
+ <div><Fragment set:html={icons.sun}/><p><b>Simple daily routine</b><span>One blend, nine herbs</span></p></div>
+</div></div>
+<section id="product"><div class="wrap grid2">
+ <div class="pimg"><img src="/images/marble.webp" alt="NutraLeaf Herbal Wellness Blend bottle on a marble stand with Amla and herbs" loading="lazy" width="1200" height="1200"></div>
+ <div><h2>{product.name}</h2><p class="lead" style="margin-top:1rem">{product.description}</p>
+ <p class="price">{product.price || 'Message us for price'}</p>
+ <dl class="spec"><dt>Format</dt><dd>{product.format}</dd>{product.quantity && <Fragment><dt>Quantity</dt><dd>{product.quantity}</dd></Fragment>}<dt>Tagline</dt><dd>{product.tagline}</dd></dl>
+ <div class="order"><label for="qty" class="sr" style="position:absolute;left:-9999px">Quantity</label>
+ <select id="qty" aria-label="Quantity">{product.quantities.map(q=><option value={q}>Qty: {q}</option>)}</select>
+ <a id="orderBtn" class="btn wa" href={order} target="_blank" rel="noopener"><Fragment set:html={icons.wa}/>Order Now</a></div></div>
+</div></section>
+<section style="padding-top:0"><div class="wrap gal"><img src="/images/kitchen.webp" alt="NutraLeaf bottle on a kitchen table with a glass and herbal powder" loading="lazy" width="1000" height="1000"><img src="/images/flatlay.webp" alt="Top view of the NutraLeaf bottle cap surrounded by its nine ingredients" loading="lazy" width="1000" height="1000"></div></section>
+<section class="benefits" id="benefits"><div class="wrap"><h2>Our Benefits</h2><p class="lead" style="margin-top:1rem">Based on what the product label says each ingredient is for.</p>
+ <div class="cards">{benefits.map(([i,t,d])=><div class="card"><Fragment set:html={icons[i]}/><h3>{t}</h3><p>{d}</p></div>)}</div></div></section>
+<section id="ingredients"><div class="wrap"><h2>Nine ingredients, one blend</h2>
+ <div class="ing">{ingredients.map(([n,d])=><div><h3>{n}</h3><p>{d}</p></div>)}</div>
+ <img class="labelimg" src="/images/labels.webp" alt="Front and back labels of the NutraLeaf bottle" loading="lazy" width="1200" height="1200"></div></section>
+<section class="steps" id="how"><div class="wrap"><h2>How to use</h2><p class="lead" style="margin-top:1rem;color:#dfe8d4">Follow the directions printed on your pack. Please read these label precautions before you start.</p>
+ <div class="cards">{[['shield','Check first','Consult a healthcare professional before use if you are pregnant, nursing or taking any medication. Not recommended for children under 12 years of age.'],['heart','Listen to your body','If any adverse reaction occurs, discontinue use and consult your doctor.'],['sun','Store well','Store in a cool, dry place away from direct sunlight. Keep out of reach of children.']].map(([i,t,d])=><div class="card"><Fragment set:html={icons[i]}/><h3>{t}</h3><p>{d}</p></div>)}</div></div></section>
+<section class="why" id="about"><div class="wrap grid2"><div><h2>Why choose The NutraLeaf?</h2><p class="lead" style="margin-top:1rem">Our label promise is simple: nourishing herbs, for a stronger you.</p></div>
+ <ul><li><b>A blend, not a single herb.</b> Nine ingredients combined in one product.</li><li><b>Plain about what it is.</b> The label lists every ingredient and what it is traditionally used for.</li><li><b>Clear precautions.</b> Usage cautions are printed on the pack so you can decide with confidence.</li></ul></div></section>
+<section class="story"><div class="wrap"><h2>Nature. Nourish. Thrive.</h2><p>We believe in everyday wellness built on herbs and natural nutrients. The NutraLeaf brings Moringa, Amla, Ashwagandha and more together in one blend: pure ingredients, pure you.</p></div></section>
+<section id="faq" style="background:var(--cream)"><div class="wrap faq"><h2 style="margin-bottom:1.5rem">Frequently asked questions</h2>{faqs.map(([q,a])=><details><summary>{q}<Fragment set:html={icons.plus}/></summary><p>{a}</p></details>)}</div></section>
+<section class="final" id="contact" style="background:var(--green);color:var(--cream)"><div class="wrap grid2">
+ <div><h2 style="color:#fff">Ready to try The NutraLeaf?</h2><p class="lead" style="margin:1rem 0 2rem;color:#dfe8d4">Message us on WhatsApp. We will confirm price, availability and delivery with you directly.</p><a class="btn light" href={waLink(generalMsg)} target="_blank" rel="noopener" style="font-size:1.15rem"><Fragment set:html={icons.wa}/>Order on WhatsApp</a></div>
+ <img src="/images/hero.webp" alt="NutraLeaf Herbal Wellness Blend bottle" loading="lazy" width="1200" height="1200" style="width:min(420px,100%);height:auto;border-radius:24px;justify-self:center"></div></section>
+</main>
+<footer><div class="wrap"><div class="cols">
+ <div><a class="logo" href="#home" aria-label="The NutraLeaf"><img class="flogo" src="/images/logo.webp" alt="The NutraLeaf" width="150" height="72"></a><p style="margin-top:.8rem">Nature. Nourish. Thrive.</p>
+ <div class="soc"><a href={site.facebookUrl} target="_blank" rel="noopener" aria-label="Facebook"><Fragment set:html={icons.fb}/></a><a href={waLink(generalMsg)} target="_blank" rel="noopener" aria-label="WhatsApp"><Fragment set:html={icons.wa}/></a></div></div>
+ <div><h4>Explore</h4><ul>{[['Home','#home'],['About','#about'],['Ingredients','#ingredients'],['Benefits','#benefits'],['FAQ','#faq'],['Contact','#contact']].map(([l,h])=><li><a href={h}>{l}</a></li>)}</ul></div>
+ <div><h4>Contact</h4><ul><li><a href={'mailto:'+site.email}>{site.email}</a></li><li><a href={'https://wa.me/'+site.whatsapp} target="_blank" rel="noopener">{site.whatsappDisplay}</a></li><li><a href={site.url}>thenutraleaf.com</a></li></ul></div>
+ <div><h4>Legal</h4><ul><li><a href="/privacy">Privacy Policy</a></li><li><a href="/terms">Terms &amp; Conditions</a></li><li><a href="#disclaimer">Product Disclaimer</a></li></ul></div>
+</div>
+<div class="legal" id="disclaimer"><p><b>Product disclaimer.</b> This product is not intended to diagnose, treat, cure or prevent any disease. Consult a healthcare professional before use if you are pregnant, nursing or taking any medication. Not recommended for children under 12. Statements about ingredients reflect the product label.</p>
+<p>© {new Date().getFullYear()} The NutraLeaf. All rights reserved.</p></div></div></footer>
+<a class="fab" href={waLink(generalMsg)} target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><Fragment set:html={icons.wa}/></a>
+{meta.pixelId && <div id="consent" class="consent" role="dialog" aria-label="Cookie notice" hidden><p>We use cookies and Meta Pixel to measure visits and improve our ads. See our <a href="/privacy">Privacy Policy</a>.</p><div><button class="btn ghost" id="cDeny">Decline</button><button class="btn" id="cOk">Accept</button></div></div>}
+<script is:inline define:vars={{ wa: site.whatsapp, name: product.name, price: product.price, pid: meta.pixelId, id: product.id, cur: product.currency, val: product.priceValue }}>
+const b=document.getElementById('burger'),n=document.getElementById('nav');
+const set=o=>{n.classList.toggle('open',o);b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu')};
+b.onclick=()=>set(!n.classList.contains('open'));n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>set(false)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')set(false)});
+const q=document.getElementById('qty'),o=document.getElementById('orderBtn');
+q.onchange=()=>{const m=`Hello The NutraLeaf! I would like to order ${name}. Quantity: ${q.value}.`+(price?` Price: ${price}.`:'')+' Please confirm availability and delivery details.';o.href=`https://wa.me/${wa}?text=${encodeURIComponent(m)}`};
+// Meta Pixel + Conversions API: only after consent; browser and server copies share one event_id
+const K='nl_consent',gs=()=>{try{return localStorage.getItem(K)}catch(e){return null}},ss=v=>{try{localStorage.setItem(K,v)}catch(e){}};
+const ck=k=>(document.cookie.match('(?:^|; )'+k+'=([^;]*)')||[])[1];
+const uid=()=>crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random().toString(16).slice(2);
+let on=false;
+function track(ev,custom,qty){
+  const eid=uid(),d=ev==='PageView'?{}:{content_ids:[id],content_type:'product',content_name:name,contents:[{id,quantity:+qty||1}]};
+  if(ev!=='PageView'&&val){d.value=val*(+qty||1);d.currency=cur}
+  fbq(custom?'trackCustom':'track',ev,d,{eventID:eid});
+  const body=JSON.stringify({event_name:ev,event_id:eid,event_source_url:location.href.split('#')[0],fbp:ck('_fbp'),fbc:ck('_fbc'),custom_data:d});
+  fetch('/api/capi',{method:'POST',headers:{'content-type':'application/json'},body,keepalive:true}).catch(()=>{});
+}
+function start(){
+  if(on||!pid)return;on=true;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init',pid);track('PageView');
+  const p=document.getElementById('product');
+  if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){track('ViewContent');io.disconnect()}},{threshold:.4});io.observe(p)}else track('ViewContent');
+  document.addEventListener('click',e=>{const a=e.target.closest('a[href^="https://wa.me/"]');if(a)track('WhatsAppContact',true,a===o?q.value:1)});
+}
+const c=document.getElementById('consent');
+if(c){const v=gs();if(v==='granted')start();else if(v===null)c.hidden=false;
+ document.getElementById('cOk').onclick=()=>{ss('granted');c.hidden=true;start()};document.getElementById('cDeny').onclick=()=>{ss('denied');c.hidden=true}}
+</script>
+</body></html>

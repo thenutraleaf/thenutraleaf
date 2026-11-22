@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://thenutraleaf.com/sitemap-index.xml
