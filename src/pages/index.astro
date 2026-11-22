@@ -60,7 +60,7 @@ const faqs = [
  <p class="price">{product.price || 'Message us for price'}</p>
  <dl class="spec"><dt>Format</dt><dd>{product.format}</dd>{product.quantity && <Fragment><dt>Quantity</dt><dd>{product.quantity}</dd></Fragment>}<dt>Tagline</dt><dd>{product.tagline}</dd></dl>
  <div class="order"><label for="qty" class="sr" style="position:absolute;left:-9999px">Quantity</label>
- <select id="qty" aria-label="Quantity">{product.quantities.map(q=><option value={q}>Qty: {q}</option>)}</select>
+ <select id="qty" aria-label="Quantity">{product.packs.map(q=><option value={q}>{q} {q===1?'pack':'packs'}</option>)}</select>
  <a id="orderBtn" class="btn wa" href={order} target="_blank" rel="noopener"><Fragment set:html={icons.wa}/>Order Now</a></div></div>
 </div></section>
 <section style="padding-top:0"><div class="wrap gal"><img src="/images/kitchen.webp" alt="NutraLeaf bottle on a kitchen table with a glass and herbal powder" loading="lazy" width="1000" height="1000"><img src="/images/flatlay.webp" alt="Top view of the NutraLeaf bottle cap surrounded by its nine ingredients" loading="lazy" width="1000" height="1000"></div></section>
@@ -103,7 +103,7 @@ const ck=k=>(document.cookie.match('(?:^|; )'+k+'=([^;]*)')||[])[1];
 const uid=()=>crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random().toString(16).slice(2);
 let on=false;
 function track(ev,custom,qty){
-  const eid=uid(),d=ev==='PageView'?{}:{content_ids:[id],content_type:'product',content_name:name,contents:[{id,quantity:+qty||1}]};
+  const eid=uid(),it=id+'-'+(+qty||1)+'PACK',d=ev==='PageView'?{}:{content_ids:[it],content_type:'product',content_name:name,contents:[{id:it,quantity:1}]};
   if(ev!=='PageView'&&val){d.value=val*(+qty||1);d.currency=cur}
   fbq(custom?'trackCustom':'track',ev,d,{eventID:eid});
   const body=JSON.stringify({event_name:ev,event_id:eid,event_source_url:location.href.split('#')[0],fbp:ck('_fbp'),fbc:ck('_fbc'),custom_data:d});

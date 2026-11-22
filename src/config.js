@@ -18,7 +18,7 @@ export const product = {
   priceValue: null,                    // number, e.g. 2500. Leave null until confirmed
   currency: 'PKR',                     // CONFIRM your selling currency
   availability: 'in stock',            // CONFIRM before submitting the feed
-  quantities: ['1', '2', '3'],         // pack counts offered in the order selector
+  packs: [1, 2, 3, 4, 6],              // pack options you really sell. Each becomes a catalog item (ID-1PACK, ID-2PACK...). Edit or remove
 };
 product.price = product.priceValue ? `${product.currency} ${product.priceValue}` : '';
 export const meta = {
