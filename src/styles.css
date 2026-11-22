@@ -37,7 +37,7 @@ dl.spec{display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.5rem;margin:1.4r
 .benefits{background:var(--cream)}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-top:2.4rem}
 .card{background:var(--paper);border:1px solid #e3d9bd;border-radius:var(--r);padding:1.8rem}.card svg{font-size:1.8rem;color:var(--leaf);margin-bottom:.8rem}.card p{color:var(--muted);font-size:.98rem}
 .ing{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 3rem;margin-top:2.2rem}.ing div{padding:1.1rem 0;border-bottom:1px solid #e0d6ba}.ing h3{font-size:1.45rem}.ing p{color:var(--muted);font-size:.97rem}
-.labelimg{max-width:760px;margin:2.5rem auto 0;border-radius:20px;box-shadow:0 30px 60px -35px rgba(0,0,0,.5);width:100%}
+.labelimg{height:auto;max-width:760px;margin:2.5rem auto 0;border-radius:20px;box-shadow:0 30px 60px -35px rgba(0,0,0,.5);width:100%}
 .steps{background:var(--green);color:var(--cream)}.steps h2{color:var(--cream)}.steps .cards .card{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18)}.steps h3{color:var(--lime)}.steps .card p{color:#dfe8d4}
 .num{font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--gold);line-height:1}
 .why ul{list-style:none;padding:0;margin-top:1.4rem;display:grid;gap:1rem}.why li{padding-left:1.8rem;position:relative}.why li:before{content:"";position:absolute;left:0;top:.55em;width:.7rem;height:.7rem;border-radius:50% 0;background:var(--leaf)}
